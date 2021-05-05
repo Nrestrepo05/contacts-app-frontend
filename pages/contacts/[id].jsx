@@ -33,7 +33,7 @@ export async function getServerSideProps({ params }) {
   const data = await response.json();
   const contact = data.body;
   return {
-    props: { contact },
+    props: { contact, baseUrl },
   };
 }
 

@@ -7,7 +7,7 @@ import Layout from './Layout';
 import SaveButton from './SaveButton';
 
 const ContactDetail = ({
-  name, lastName, email, phoneNumber, company, method, id, deleteButton,
+  name, lastName, email, phoneNumber, company, method, id, deleteButton, baseUrl,
 }) => {
   const router = useRouter();
 
@@ -90,8 +90,6 @@ const ContactDetail = ({
   const handleSaveButtonClick = async (e) => {
     e.preventDefault();
     try {
-      const baseUrl = process.env.BACKEND_HOST;
-
       handleErrors(name.value, lastName.value, email.value, phoneNumber.value, company.value);
       const data = {
         contact: {
@@ -121,8 +119,6 @@ const ContactDetail = ({
   const handleDeleteButtonClick = async (e) => {
     e.preventDefault();
     try {
-      const baseUrl = process.env.BACKEND_HOST;
-
       await fetch(`${baseUrl}/contacts/${id}`, {
         method: 'DELETE',
       });
