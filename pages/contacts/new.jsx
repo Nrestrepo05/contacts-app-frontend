@@ -24,7 +24,7 @@ const New = ({ baseUrl }) => {
   );
 };
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps() {
   const baseUrl = process.env.BACKEND_HOST;
   return {
     props: { baseUrl },
