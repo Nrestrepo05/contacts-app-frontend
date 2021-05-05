@@ -2,7 +2,7 @@ import React from 'react';
 import ContactDetail from '../../components/ContactDetails';
 import useInputValue from '../../hooks/useInputValue';
 
-const Contacts = ({ contact }) => {
+const Contacts = ({ contact, baseUrl }) => {
   const id = contact._id;
 
   const name = useInputValue(contact.name);
@@ -22,6 +22,7 @@ const Contacts = ({ contact }) => {
         company={company}
         method="PUT"
         deleteButton="true"
+        baseUrl={baseUrl}
       />
     </>
   );
