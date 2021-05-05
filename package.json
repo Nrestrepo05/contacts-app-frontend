@@ -18,7 +18,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next dev",
+    "dev": "export BACKEND_HOST=http://localhost:5050 && next dev",
     "start": "next start -p ${PORT}",
     "build": "next build"
   },
