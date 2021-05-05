@@ -90,7 +90,7 @@ const ContactDetail = ({
   const handleSaveButtonClick = async (e) => {
     e.preventDefault();
     try {
-      const baseUrl = process.env.BACKEND_HOST || 'http://localhost:5050';
+      const baseUrl = process.env.BACKEND_HOST;
 
       handleErrors(name.value, lastName.value, email.value, phoneNumber.value, company.value);
       const data = {
@@ -121,7 +121,7 @@ const ContactDetail = ({
   const handleDeleteButtonClick = async (e) => {
     e.preventDefault();
     try {
-      const baseUrl = process.env.BACKEND_HOST || 'http://localhost:5050';
+      const baseUrl = process.env.BACKEND_HOST;
 
       await fetch(`${baseUrl}/contacts/${id}`, {
         method: 'DELETE',

@@ -112,7 +112,7 @@ const Home = ({
 export async function getServerSideProps({ query }) {
   let page = 1;
   let searchQuery = null;
-  const baseUrl = process.env.BACKEND_HOST || 'http://localhost:5050';
+  const baseUrl = process.env.BACKEND_HOST;
   let url;
 
   if (query.page) { page = query.page; }

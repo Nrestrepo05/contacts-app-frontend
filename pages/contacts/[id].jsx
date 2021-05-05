@@ -28,7 +28,7 @@ const Contacts = ({ contact }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const baseUrl = process.env.BACKEND_HOST || 'http://localhost:5050';
+  const baseUrl = process.env.BACKEND_HOST;
   const response = await fetch(`${baseUrl}/contacts/${params.id}`);
   const data = await response.json();
   const contact = data.body;
