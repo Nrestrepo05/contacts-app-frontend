@@ -110,6 +110,7 @@ const ContactDetail = ({
           body: JSON.stringify(data),
         },
       );
+      if (res.status === 200) { router.push('/'); }
       return res;
     } catch (error) {
       return console.error(error.message);
