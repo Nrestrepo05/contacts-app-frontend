@@ -32,16 +32,16 @@ const Home = ({
 
   const handleExitButtonClick = () => {
     setButtonsHidden(false);
-    router.push('/');
+    router.push('/contacts');
   };
 
   const handleNextButtonClick = (e) => {
     e.preventDefault();
     let url;
     if (searchQuery) {
-      url = `/?page=${page + 1}&search=${searchQuery}`;
+      url = `/contacts/?page=${page + 1}&search=${searchQuery}`;
     } else {
-      url = `/?page=${page + 1}`;
+      url = `/contacts/?page=${page + 1}`;
     }
 
     router.push(url);
@@ -51,9 +51,9 @@ const Home = ({
     e.preventDefault();
     let url;
     if (searchQuery) {
-      url = `/?page=${page - 1}&search=${searchQuery}`;
+      url = `/contacts/?page=${page - 1}&search=${searchQuery}`;
     } else {
-      url = `/?page=${page - 1}`;
+      url = `/contacts/?page=${page - 1}`;
     }
 
     router.push(url);

@@ -8,7 +8,7 @@ const SearchBar = ({ hidden }) => {
   const router = useRouter();
 
   const handleInputOnSubmit = () => {
-    router.push(`/?search=${searchQuery.value}`);
+    router.push(`/contacts/?search=${searchQuery.value}`);
   };
 
   return (

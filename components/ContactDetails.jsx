@@ -19,7 +19,7 @@ const ContactDetail = ({
 
   const handleExitButtonClick = (e) => {
     e.preventDefault();
-    router.push('/');
+    router.push('/contacts');
   };
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const ContactDetail = ({
           setCompanyError('');
         }
       }
-      if (res.status === 200 || res.status === 201) { router.push('/'); }
+      if (res.status === 200 || res.status === 201) { router.push('/contacts'); }
       return res;
     } catch (error) {
       return console.error(error.message);
@@ -89,7 +89,7 @@ const ContactDetail = ({
       await fetch(`${baseUrl}/contacts/${id}`, {
         method: 'DELETE',
       });
-      return router.push('/');
+      return router.push('/contacts');
     } catch (error) {
       return console.error(error.message);
     }
