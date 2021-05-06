@@ -1,5 +1,7 @@
 import React from 'react';
 import ContactDetail from '../../components/ContactDetails';
+import NotFound from '../../components/NotFound';
+import Layout from '../../components/Layout';
 import useInputValue from '../../hooks/useInputValue';
 
 const Contacts = ({ contact, baseUrl }) => {
@@ -13,17 +15,26 @@ const Contacts = ({ contact, baseUrl }) => {
 
   return (
     <>
-      <ContactDetail
-        id={id}
-        name={name}
-        lastName={lastName}
-        email={email}
-        phoneNumber={phoneNumber}
-        company={company}
-        method="PUT"
-        deleteButton="true"
-        baseUrl={baseUrl}
-      />
+      {contact._id
+        ? (
+          <ContactDetail
+            id={id}
+            name={name}
+            lastName={lastName}
+            email={email}
+            phoneNumber={phoneNumber}
+            company={company}
+            method="PUT"
+            deleteButton="true"
+            baseUrl={baseUrl}
+          />
+
+        )
+        : (
+          <Layout>
+            <NotFound title="This contact does not exist :(" />
+          </Layout>
+        )}
     </>
   );
 };
