@@ -23,74 +23,11 @@ const ContactDetail = ({
   };
 
   useEffect(() => {
-
-  }, [nameError, lastNameError]);
-
-  const handleErrors = (
-    nameInput, lastNameInput, emailInput, phoneNumberInput, companyInput,
-  ) => {
-    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}/;
-    const phoneNumberRegex = /[+]*[\d]{0,4}[\d]{3,4}[0-9]{7,9}/;
-
-    let error = null;
-
-    if (!nameInput) {
-      error = 'name is required';
-      setNameError(error);
-    } else if (nameInput.length < 2) {
-      error = 'name must have at least two characters';
-      setNameError(error);
-    } else if (nameInput.length > 70) {
-      setNameError('name is too long');
-    } else {
-      setNameError('');
-    }
-
-    if (!lastNameInput) {
-      setLastNameError('last name is required');
-    } else if (lastNameInput.length < 2) {
-      setLastNameError('last name must have at least two characters');
-    } else if (lastNameInput.length > 70) {
-      setLastNameError('last name is too long');
-    } else {
-      setLastNameError('');
-    }
-
-    if (!emailInput) {
-      setEmailError('email is required');
-    } else if (!emailInput.match(emailRegex)) {
-      setEmailError('email must be valid');
-    } else if (emailInput.length > 70) {
-      setCompanyError('email is too long');
-    } else {
-      setEmailError('');
-    }
-
-    if (phoneNumberInput) {
-      if (!phoneNumberInput.match(phoneNumberRegex)) {
-        setPhoneNumberError('phone number must be valid');
-      } else {
-        setPhoneNumberError('');
-      }
-    }
-
-    if (company) {
-      if (companyInput.length < 2) {
-        setCompanyError('comapany name must have at least two characters');
-      } else if (companyInput.length > 70) {
-        setCompanyError('company name is too long');
-      } else {
-        setCompanyError('');
-      }
-    }
-
-    return null;
-  };
+  });
 
   const handleSaveButtonClick = async (e) => {
     e.preventDefault();
     try {
-      handleErrors(name.value, lastName.value, email.value, phoneNumber.value, company.value);
       const data = {
         contact: {
           name: name.value,
@@ -110,6 +47,35 @@ const ContactDetail = ({
           body: JSON.stringify(data),
         },
       );
+
+      const resContent = await res.json();
+      if (resContent.error) {
+        if (resContent.error.name) {
+          setNameError(resContent.error.name);
+        } else {
+          setNameError('');
+        }
+        if (resContent.error.last_name) {
+          setLastNameError(resContent.error.last_name);
+        } else {
+          setLastNameError('');
+        }
+        if (resContent.error.email) {
+          setEmailError(resContent.error.email);
+        } else {
+          setEmailError('');
+        }
+        if (resContent.error.phone_number) {
+          setPhoneNumberError(resContent.error.phone_number);
+        } else {
+          setPhoneNumberError('');
+        }
+        if (resContent.error.company) {
+          setCompanyError(resContent.error.company);
+        } else {
+          setCompanyError('');
+        }
+      }
       if (res.status === 200 || res.status === 201) { router.push('/'); }
       return res;
     } catch (error) {
