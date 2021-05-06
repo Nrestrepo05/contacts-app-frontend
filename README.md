@@ -1,4 +1,4 @@
-# Contacts API
+# Contacts APP
 Contacts App is an app that consume the [contacts app api](https://github.com/Nrestrepo05/contacts-app-api), and allows you to create, update, and delete contacts.
 
 This projects is hosted on: https://contacts-nrestrepo05.herokuapp.com/contacts
