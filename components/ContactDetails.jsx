@@ -30,11 +30,11 @@ const ContactDetail = ({
     try {
       const data = {
         contact: {
-          name: name.value,
-          last_name: lastName.value,
-          email: email.value,
-          phone_number: phoneNumber.value,
-          company: company.value,
+          name: name.value.trim(),
+          last_name: lastName.value.trim(),
+          email: email.value.trim(),
+          phone_number: phoneNumber.value.trim(),
+          company: company.value.trim(),
         },
       };
 
