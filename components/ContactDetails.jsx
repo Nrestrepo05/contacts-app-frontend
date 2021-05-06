@@ -111,20 +111,20 @@ const ContactDetail = ({
         </section>
         <section className="main">
           <Input
-            property="name"
+            property="name *"
             value={name.value}
             onChange={name.onChange}
             error={nameError}
           />
           <Input
-            property="last name"
+            property="last name *"
             id="last_name"
             value={lastName.value}
             onChange={lastName.onChange}
             error={lastNameError}
           />
           <Input
-            property="email"
+            property="email *"
             id="email"
             value={email.value}
             onChange={email.onChange}
@@ -144,6 +144,7 @@ const ContactDetail = ({
             onChange={company.onChange}
             error={companyError}
           />
+          <p>elements with * are required</p>
         </section>
         <section className="buttons-footer">
           <ExitButton onClick={handleExitButtonClick} big="true" margin="true" />
@@ -188,6 +189,9 @@ const ContactDetail = ({
           h1 {
             font-size: 24px;
             color: #183152;
+          }
+          p {
+            color: #375D81;
           }
         `}
       </style>
