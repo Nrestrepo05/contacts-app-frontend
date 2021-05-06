@@ -104,10 +104,6 @@ const ContactDetail = ({
             {' '}
             {lastName.value}
           </h1>
-          <div className="buttons">
-            <SaveButton small="true" onClick={handleSaveButtonClick} />
-            <ExitButton onClick={handleExitButtonClick} small="true" />
-          </div>
         </section>
         <section className="main">
           <Input
