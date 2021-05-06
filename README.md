@@ -3,6 +3,8 @@ Contacts App is an app that consume the [contacts app api](https://github.com/Nr
 
 This projects is hosted on: https://contacts-nrestrepo05.herokuapp.com/contacts
 
+![Contacts App Home](/public/assets/images/contacts-app-home.png)
+
 ## Technologies
 This project was made with React.JS and Next.JS.
 
