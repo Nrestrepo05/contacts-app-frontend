@@ -33,10 +33,11 @@ const ContactDetail = ({
           name: name.value.trim(),
           last_name: lastName.value.trim(),
           email: email.value.trim(),
-          phone_number: phoneNumber.value.trim(),
           company: company.value.trim(),
         },
       };
+
+      if (phoneNumber.value) data.contact.phone_number = phoneNumber.value.trim();
 
       const res = await fetch(
         id ? `${baseUrl}/contacts/${id}` : `${baseUrl}/contacts/`, {
