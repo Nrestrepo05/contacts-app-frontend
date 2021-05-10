@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DeleteButton from './DeleteButton';
 import ExitButton from './ExitButton';
 import Input from './Input';
@@ -16,14 +16,22 @@ const ContactDetail = ({
   const [emailError, setEmailError] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState('');
   const [companyError, setCompanyError] = useState('');
+  const [modalIsActive, setModalIsActive] = useState(false);
 
   const handleExitButtonClick = (e) => {
     e.preventDefault();
     router.push('/contacts');
   };
 
-  useEffect(() => {
-  });
+  const handelCloseModal = (e) => {
+    e.preventDefault();
+    setModalIsActive(false);
+  };
+
+  const handelOpenModal = (e) => {
+    e.preventDefault();
+    setModalIsActive(true);
+  };
 
   const handleSaveButtonClick = async (e) => {
     e.preventDefault();
@@ -98,7 +106,23 @@ const ContactDetail = ({
 
   return (
     <>
-      <Layout title="Contact Detail">
+      <div className={modalIsActive ? 'modal is-active' : 'modal'}>
+        <div className="modal-background" />
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Delete contact</p>
+            <button className="delete" aria-label="close" onClick={handelCloseModal} />
+          </header>
+          <section className="modal-card-body">
+            Are you sure you want to delete this contact?
+          </section>
+          <footer className="modal-card-foot">
+            <button className="button is-danger" onClick={handleDeleteButtonClick}>Delete</button>
+            <button className="button" onClick={handelCloseModal}>Cancel</button>
+          </footer>
+        </div>
+      </div>
+      <Layout title={name.value || 'New Contact'}>
         <div className="columns is-centered">
           <div className="column is-four-fifths">
             <h1 className="title is-3">
@@ -157,7 +181,7 @@ const ContactDetail = ({
             {deleteButton ? (
               <>
                 <div className="columns is-centered">
-                  <DeleteButton onClick={handleDeleteButtonClick} />
+                  <DeleteButton onClick={handelOpenModal} />
                 </div>
               </>
             ) : ''}
