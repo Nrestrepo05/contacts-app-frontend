@@ -58,7 +58,7 @@ const Home = ({
 
   return (
     <>
-      <Layout>
+      <Layout title="Home">
         <div className="column is-full">
           <div className="columns is-centered">
             <PrimaryButton hidden={buttonsHidden}>+ New Contact</PrimaryButton>

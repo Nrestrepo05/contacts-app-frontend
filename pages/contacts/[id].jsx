@@ -31,7 +31,7 @@ const Contacts = ({ contact, baseUrl }) => {
 
         )
         : (
-          <Layout>
+          <Layout title="Not Found">
             <NotFound title="This contact does not exist :(" />
           </Layout>
         )}

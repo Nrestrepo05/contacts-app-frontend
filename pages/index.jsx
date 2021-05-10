@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 const Home = () => {
   return (
     <>
-      <Layout>
+      <Layout title="Contacts App">
         <section style={{ textAlign: 'center' }}>
           <h1 className="title is-4" style={{ marginTop: '30px' }}>Welcome to Contacts App!</h1>
           <p>
