@@ -5,17 +5,21 @@ const Input = ({
 }) => {
   return (
     <>
-      <div className="column">
+      <div className="column" style={{ paddingBottom: '0' }}>
         <label htmlFor={id}>{property}</label>
-        {error ? <p>{error}</p> : ''}
         <input
-          className="input is-primary"
+          className={error ? 'input is-danger' : 'input is-primary'}
           id={id}
           type="text"
           placeholder={property}
           value={value}
           onChange={onChange}
         />
+        {error
+          ? (
+            <p className="has-text-danger">{error}</p>
+          )
+          : ''}
       </div>
     </>
   );

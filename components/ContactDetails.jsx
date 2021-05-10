@@ -169,7 +169,7 @@ const ContactDetail = ({
               onChange={company.onChange}
               error={companyError}
             />
-            <div className="column">
+            <div className="column" style={{ paddingTop: '0', paddingBottom: '20px' }}>
               <p>elements with * are required</p>
             </div>
             <div className="columns is-centered">
@@ -180,7 +180,7 @@ const ContactDetail = ({
             </div>
             {deleteButton ? (
               <>
-                <div className="columns is-centered">
+                <div className="columns is-centered" style={{ paddingBottom: '15px' }}>
                   <DeleteButton onClick={handelOpenModal} />
                 </div>
               </>
