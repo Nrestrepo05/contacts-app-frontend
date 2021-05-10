@@ -110,7 +110,7 @@ const ContactDetail = ({
         <div className="modal-background" />
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Delete contact</p>
+            <p className="modal-card-title has-text-danger">Delete contact</p>
             <button className="delete" aria-label="close" onClick={handelCloseModal} />
           </header>
           <section className="modal-card-body">
