@@ -1,10 +1,10 @@
 /* eslint-disable radix */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import ContactInfo from '../../components/ContactInfo';
 import ExitButton from '../../components/ExitButton';
 import Layout from '../../components/Layout';
-import PrevNextButtons from '../../components/PrevNextButtons';
 import PrimaryButton from '../../components/PrimaryButton';
 import SearchBar from '../../components/SearchBar';
 import SearchButton from '../../components/SearchButton';
@@ -14,17 +14,8 @@ const Home = ({
   contacts, pages, page, searchQuery,
 }) => {
   const [buttonsHidden, setButtonsHidden] = useState(false);
-  const [nextButtonActive, setNextButtonActive] = useState(false);
-  const [prevButtonActive, setPrevButtonActive] = useState(false);
 
   const router = useRouter();
-
-  useEffect(() => {
-    if (page < pages) { setNextButtonActive(true); }
-    if (page >= pages) { setNextButtonActive(false); }
-    if (page > 1) { setPrevButtonActive(true); }
-    if (page <= 1) { setPrevButtonActive(false); }
-  });
 
   const handleSearchButtonClick = () => {
     setButtonsHidden(true);
@@ -38,25 +29,31 @@ const Home = ({
   const handleNextButtonClick = (e) => {
     e.preventDefault();
     let url;
-    if (searchQuery) {
-      url = `/contacts/?page=${page + 1}&search=${searchQuery}`;
-    } else {
-      url = `/contacts/?page=${page + 1}`;
-    }
+    if (page < pages) {
+      if (searchQuery) {
+        url = `/contacts/?page=${page + 1}&search=${searchQuery}`;
+      } else {
+        url = `/contacts/?page=${page + 1}`;
+      }
 
-    router.push(url);
+      return router.push(url);
+    }
+    return null;
   };
 
   const handlePrevButtonClick = (e) => {
     e.preventDefault();
     let url;
-    if (searchQuery) {
-      url = `/contacts/?page=${page - 1}&search=${searchQuery}`;
-    } else {
-      url = `/contacts/?page=${page - 1}`;
-    }
+    if (page > 1) {
+      if (searchQuery) {
+        url = `/contacts/?page=${page - 1}&search=${searchQuery}`;
+      } else {
+        url = `/contacts/?page=${page - 1}`;
+      }
 
-    router.push(url);
+      return router.push(url);
+    }
+    return null;
   };
 
   return (
@@ -67,30 +64,48 @@ const Home = ({
             <PrimaryButton hidden={buttonsHidden}>+ New Contact</PrimaryButton>
             <SearchButton onClick={handleSearchButtonClick} hidden={buttonsHidden} />
             <SearchBar hidden={!buttonsHidden} />
-            <ExitButton onClick={handleExitButtonClick} small="true" hidden={!buttonsHidden} />
+            <ExitButton onClick={handleExitButtonClick} small="true" hidden={!buttonsHidden}>X</ExitButton>
           </div>
         </div>
         {contacts.length < 1
           ? (<NotFound title="There's Nothing Yet" subtitle="Create the first!" />)
           : ''}
         {contacts.map((contact) => (
-          <div className="columns is-centered">
+          <div className="columns is-centered" key={contact._id}>
             <ContactInfo
               name={contact.name}
               lastName={contact.last_name}
               email={contact.email}
               id={contact._id}
-              key={contact._id}
             />
           </div>
         ))}
         <div className="columns is-centered">
-          <PrevNextButtons
-            prev={prevButtonActive}
-            next={nextButtonActive}
-            prevOnClick={handlePrevButtonClick}
-            nextOnClick={handleNextButtonClick}
-          />
+          <nav className="pagination" role="navigation" aria-label="pagination">
+            {
+            page > 1
+              ? <button className="pagination-previous" onClick={handlePrevButtonClick}>Previous</button>
+              : <button className="pagination-previous" onClick={handlePrevButtonClick} disabled>Previous</button>
+              }
+            {
+            page < pages
+              ? <button className="pagination-next" onClick={handleNextButtonClick}>Next page</button>
+              : <button className="pagination-next" onClick={handleNextButtonClick} disabled>Next page</button>
+            }
+            <ul className="pagination-list">
+              <li>
+                <Link href="/contacts?page=1">
+                  <a className="pagination-link is-current" aria-label="Actual page">{page}</a>
+                </Link>
+              </li>
+              <li>
+                <span className="pagination-ellipsis ">&hellip;</span>
+              </li>
+              <li>
+                <a className="pagination-link is-primary is-outlined" aria-label="Last Page">{pages}</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </Layout>
     </>

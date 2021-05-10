@@ -25,7 +25,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "export BACKEND_HOST=https://contacts-api-nrestrepo05.herokuapp.com && next dev",
+    "dev": "export BACKEND_HOST=http://localhost:5050 && next dev",
     "start": "next start -p ${PORT}",
     "build": "next build"
   },
