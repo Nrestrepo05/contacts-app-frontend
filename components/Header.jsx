@@ -3,29 +3,22 @@ import Link from 'next/link';
 
 const Header = () => (
   <>
-    <header>
-      <Link href="/">
-        <a>
-          <h1>Your Contacts</h1>
-        </a>
-      </Link>
-    </header>
+    <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
+        <h1 className="navbar-item title is-3">
+          <Link href="/contacts">
+            <a>
+              Contacts App
+            </a>
+          </Link>
+        </h1>
+      </div>
+    </nav>
+
     <style jsx>
       {`
-        header {
-          min-height: 60px;
-          max-height: 60px;
-          min-width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: #375D81;
-          color: #fff;
-          font-weight: bold;
-        }
         a {
-          text-decoration: none;
-          color: #fff;
+          color: white;
         }
       `}
     </style>

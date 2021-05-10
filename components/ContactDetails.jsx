@@ -99,99 +99,71 @@ const ContactDetail = ({
   return (
     <>
       <Layout title="Contact Detail">
-        <section className="header">
-          <h1>
-            {name.value}
-            {' '}
-            {lastName.value}
-          </h1>
-        </section>
-        <section className="main">
-          <Input
-            property="name *"
-            value={name.value}
-            onChange={name.onChange}
-            error={nameError}
-          />
-          <Input
-            property="last name *"
-            id="last_name"
-            value={lastName.value}
-            onChange={lastName.onChange}
-            error={lastNameError}
-          />
-          <Input
-            property="email *"
-            id="email"
-            value={email.value}
-            onChange={email.onChange}
-            error={emailError}
-          />
-          <Input
-            property="phone number"
-            id="phone_number"
-            value={phoneNumber.value}
-            onChange={phoneNumber.onChange}
-            error={phoneNumberError}
-          />
-          <Input
-            property="company"
-            id="company"
-            value={company.value}
-            onChange={company.onChange}
-            error={companyError}
-          />
-          <p>elements with * are required</p>
-        </section>
-        <section className="buttons-footer">
-          <ExitButton onClick={handleExitButtonClick} big="true" margin="true" />
-          <SaveButton big="true" onClick={handleSaveButtonClick} />
-        </section>
-        {deleteButton ? (
-          <>
-            <section className="delete-button">
-              <DeleteButton onClick={handleDeleteButtonClick} />
-            </section>
-          </>
-        ) : ''}
+        <div className="columns is-centered">
+          <div className="column is-four-fifths">
+            <h1 className="title is-3">
+              {name.value}
+              {' '}
+              {lastName.value}
+            </h1>
+          </div>
+        </div>
+        <div className="columns is-centered">
+
+          <form action="" className="box column is-four-fifths">
+            <Input
+              property="name *"
+              value={name.value}
+              onChange={name.onChange}
+              error={nameError}
+            />
+            <Input
+              property="last name *"
+              id="last_name"
+              value={lastName.value}
+              onChange={lastName.onChange}
+              error={lastNameError}
+            />
+            <Input
+              property="email *"
+              id="email"
+              value={email.value}
+              onChange={email.onChange}
+              error={emailError}
+            />
+            <Input
+              property="phone number"
+              id="phone_number"
+              value={phoneNumber.value}
+              onChange={phoneNumber.onChange}
+              error={phoneNumberError}
+            />
+            <Input
+              property="company"
+              id="company"
+              value={company.value}
+              onChange={company.onChange}
+              error={companyError}
+            />
+            <div className="column">
+              <p>elements with * are required</p>
+            </div>
+            <div className="columns is-centered">
+              <ExitButton onClick={handleExitButtonClick} big="true" margin="true">
+                Exit
+              </ExitButton>
+              <SaveButton big="true" onClick={handleSaveButtonClick} />
+            </div>
+            {deleteButton ? (
+              <>
+                <div className="columns is-centered">
+                  <DeleteButton onClick={handleDeleteButtonClick} />
+                </div>
+              </>
+            ) : ''}
+          </form>
+        </div>
       </Layout>
-      <style jsx>
-        {`
-          section {
-            min-width: 100%;
-            max-width: 100%;
-          }
-          section.header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-          }
-          section.buttons-footer {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-          }
-          section.delete-button {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-          }
-          div.buttons {
-            min-width: 90px;
-            max-width: 90px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-          }
-          h1 {
-            font-size: 24px;
-            color: #183152;
-          }
-          p {
-            color: #375D81;
-          }
-        `}
-      </style>
     </>
   );
 };

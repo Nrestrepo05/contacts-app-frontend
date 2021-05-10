@@ -6,54 +6,45 @@ const PrevNextButtons = ({
   return (
     <>
       {prev && !next
-        ? <button onClick={prevOnClick} className="prev">Prev</button>
+        ? (
+          <div className="column is-one-fifth">
+            <button onClick={prevOnClick} className="button is-primary is-fullwidth">
+              {/* <span className="icon">
+                <i className="fas fa-arrow-right" />
+              </span> */}
+              Prev
+            </button>
+          </div>
+        )
         : ''}
       {next && !prev
-        ? <button onClick={nextOnClick} className="next">Next</button>
+        ? (
+          <div className="column is-one-fifth">
+            <button onClick={nextOnClick} className="button is-primary is-fullwidth">
+              Next
+              {/* <span className="icon">
+                <i className="fas chevron-right" />
+              </span> */}
+            </button>
+          </div>
+        )
         : ''}
       {
         prev && next
           ? (
-            <div>
-              <button onClick={prevOnClick} className="prev two">Prev</button>
-              <button onClick={nextOnClick} className="next">Next</button>
+            <div className="column is-two-fifths">
+              <div className="columns">
+                <div className="column is-half">
+                  <button onClick={prevOnClick} className="button is-primary is-fullwidth">Prev</button>
+                </div>
+                <div className="column is-half">
+                  <button onClick={nextOnClick} className="button is-primary is-outlined is-fullwidth">Next</button>
+                </div>
+              </div>
             </div>
           )
           : ''
       }
-      <style jsx>
-        {`
-          div {
-            display: flex;
-          }
-          button {
-            min-height: 38px;
-            max-height: 38px;
-            min-width: 66px;
-            max-height: 66px;
-            border-radius: 7px;
-            border: none;
-            background: transparent;
-            font-size: 18px;
-            font-weight: bold;
-          }
-          button:focus {
-            outline: none;
-            opacity: 0.5;
-          }
-          button.prev {
-            color: #198754;
-            border 1px solid #198754;
-          }
-          button.prev.two {
-            margin-right: 10px;
-          }
-          button.next {
-            color: #fff;
-            background: #198754;
-          }
-        `}
-      </style>
     </>
   );
 };

@@ -3,12 +3,19 @@ import React from 'react';
 const Footer = () => {
   return (
     <>
-      <footer>
-        <a href="https://nrestrepo05.vercel.app">
-          made with ❤ by nrestrepo05
-        </a>
+      <footer className="footer">
+        <div className="content has-text-centered">
+          <p>
+            made with ❤️ by&nbsp;
+            <strong>
+              <a href="https://nrestrepo05.vercelapp.com">
+                Nrestrepo05
+              </a>
+            </strong>
+          </p>
+        </div>
       </footer>
-      <style jsx>
+      {/* <style jsx>
         {`
         footer {
           min-height: 30px;
@@ -24,7 +31,7 @@ const Footer = () => {
           color: #fff;
         }
       `}
-      </style>
+      </style> */}
     </>
   );
 };

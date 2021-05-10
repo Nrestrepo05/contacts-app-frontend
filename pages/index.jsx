@@ -6,9 +6,8 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <section>
-
-          <h1>Welcome to Contacts App!</h1>
+        <section style={{ textAlign: 'center' }}>
+          <h1 className="title is-4" style={{ marginTop: '30px' }}>Welcome to Contacts App!</h1>
           <p>
             This is an app that allows you to create and edit contacts.
             <br />
@@ -33,46 +32,10 @@ const Home = () => {
           <p><strong>Thanks for entering. I hope you like it!</strong></p>
 
           <Link href="/contacts">
-            <a className="button">Go to Contacts App!</a>
+            <a className="button is-primary" style={{ marginTop: '10px' }}>Go to Contacts App!</a>
           </Link>
         </section>
       </Layout>
-      <style jsx>
-        {`
-          section {
-            text-align: center;
-            margin-top: 30px;
-          }
-          p {
-            margin-top: 10px;
-            color: #375D81;
-          }
-          h1 {
-            color: #183152;
-          }
-          p strong {
-            color: #183152;
-          }
-          a {
-            color: #183152;
-          }
-          a.button {
-            color: white;
-            background: #375D81;
-            min-width: 180px;
-            max-width: 180px;
-            padding: 10px 20px;
-            margin-top: 20px;
-            display: inline-block;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-          }
-          a.button:focus {
-            opacity: 0.5;
-          }
-        `}
-      </style>
     </>
   );
 };

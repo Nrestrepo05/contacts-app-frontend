@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 
@@ -14,7 +13,7 @@ const PrimaryButton = ({ children, buttonType, hidden }) => {
 
   const [className, setClassName] = useState('');
   useEffect(() => {
-    let classNames = '';
+    let classNames = 'column is-two-fifths ';
     if (disabled) classNames += 'disabled ';
     if (hidden) classNames += 'hidden ';
     setClassName(classNames);
@@ -22,45 +21,19 @@ const PrimaryButton = ({ children, buttonType, hidden }) => {
 
   return (
     <>
-      <button
-        type={buttonType}
-        onClick={handleButtonClick}
-        className={className}
-      >
-        {children}
-      </button>
+      <div className={className}>
+        <button
+          type={buttonType}
+          onClick={handleButtonClick}
+          className="button is-primary is-fullwidth"
+        >
+          {children}
+        </button>
+      </div>
       <style jsx>
         {`
-          button {
-            min-height: 40px;
-            max-height: 40px;
-            min-width: 80%;
-            max-width: 80%;
-            color: white;
-            background: #183152;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 7px;
-            margin-right: 5%;
-            border: none;
-            font-size: 18px;
-            font-weight: bold;
-          }
-          button.disabled {
-            opacity: 0.5;
-          }
-          button.hidden{
+          .hidden{
             display: none;
-          }
-          button:focus {
-            border: none;
-            outline: none;
-          }
-          @media screen and (min-width: 440px) {
-            button {
-              margin-right: 3%;
-            }
           }
         `}
       </style>

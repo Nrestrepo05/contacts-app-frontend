@@ -62,49 +62,37 @@ const Home = ({
   return (
     <>
       <Layout>
-        <div>
-          <SearchBar hidden={!buttonsHidden} />
-          <ExitButton onClick={handleExitButtonClick} small="true" hidden={!buttonsHidden} />
-          <PrimaryButton hidden={buttonsHidden}>+ New Contact</PrimaryButton>
-          <SearchButton onClick={handleSearchButtonClick} hidden={buttonsHidden} />
+        <div className="column is-full">
+          <div className="columns is-centered">
+            <PrimaryButton hidden={buttonsHidden}>+ New Contact</PrimaryButton>
+            <SearchButton onClick={handleSearchButtonClick} hidden={buttonsHidden} />
+            <SearchBar hidden={!buttonsHidden} />
+            <ExitButton onClick={handleExitButtonClick} small="true" hidden={!buttonsHidden} />
+          </div>
         </div>
         {contacts.length < 1
-          ? (<NotFound title="There's Nothing yet" subtitle="Create the first!" />)
+          ? (<NotFound title="There's Nothing Yet" subtitle="Create the first!" />)
           : ''}
         {contacts.map((contact) => (
-          <ContactInfo
-            name={contact.name}
-            lastName={contact.last_name}
-            email={contact.email}
-            id={contact._id}
-            key={contact._id}
-          />
+          <div className="columns is-centered">
+            <ContactInfo
+              name={contact.name}
+              lastName={contact.last_name}
+              email={contact.email}
+              id={contact._id}
+              key={contact._id}
+            />
+          </div>
         ))}
-        <PrevNextButtons
-          prev={prevButtonActive}
-          next={nextButtonActive}
-          prevOnClick={handlePrevButtonClick}
-          nextOnClick={handleNextButtonClick}
-        />
+        <div className="columns is-centered">
+          <PrevNextButtons
+            prev={prevButtonActive}
+            next={nextButtonActive}
+            prevOnClick={handlePrevButtonClick}
+            nextOnClick={handleNextButtonClick}
+          />
+        </div>
       </Layout>
-      <style jsx>
-        {`
-          div {
-            max-width: 100%;
-            min-width: 100%;
-            display: flex;
-            margin-bottom: 30px;
-            align-items: center;
-            justify-content: center;
-          }
-          @media screen and (min-width: 1024px) {
-            div {
-              max-width: 65%;
-              min-width: 65%;
-            }
-          }
-        `}
-      </style>
     </>
   );
 };

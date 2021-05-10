@@ -1,8 +1,15 @@
 {
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "bulma": "^0.9.2",
     "next": "^10.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-fontawesome": "^1.7.1",
+    "sass": "^1.32.12"
   },
   "devDependencies": {
     "eslint": "^7.25.0",
@@ -18,7 +25,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "export BACKEND_HOST=http://localhost:5050 && next dev",
+    "dev": "export BACKEND_HOST=https://contacts-api-nrestrepo05.herokuapp.com && next dev",
     "start": "next start -p ${PORT}",
     "build": "next build"
   },

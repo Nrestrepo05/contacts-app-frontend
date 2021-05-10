@@ -13,38 +13,20 @@ const SearchBar = ({ hidden }) => {
 
   return (
     <>
-      <input
-        placeholder="Search contact..."
-        className={hidden ? 'hidden' : ''}
-        value={searchQuery.value}
-        onChange={searchQuery.onChange}
-        onSubmit={handleInputOnSubmit}
-        onKeyPress={handleInputOnSubmit}
-      />
+      <div className={hidden ? 'hidden' : 'column is-two-fifths'}>
+        <input
+          placeholder="Search contact..."
+          className="input is-primary is-rounded"
+          value={searchQuery.value}
+          onChange={searchQuery.onChange}
+          onSubmit={handleInputOnSubmit}
+          onKeyPress={handleInputOnSubmit}
+        />
+      </div>
       <style jsx>
         {`
-          input {
-            min-height: 40px;
-            max-height: 40px;
-            min-width: calc(85% - 40px);
-            max-width: calc(85% - 40px);
-            padding: 0 20px;
-            border: 2px solid #183152;
-            background: transparent;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: bold;
-            margin-right: 10px;
-          }
-          input.hidden {
+          .hidden {
             display: none;
-          }
-          input::placeholder {
-            color: #183152;
-          }
-          input:focus {
-            outline: none;
-            box-shadow: 2px 5px rgba(0, 0, 0, .05);
           }
         `}
       </style>
